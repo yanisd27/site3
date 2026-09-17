@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Înregistrare - FitLife Pro</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body style="background-color: #f4f6f9; display: flex; justify-content: center; align-items: center; min-height: 100vh; padding: 40px 0;">
+<button id="theme-toggle" class="theme-toggle-btn" style="position: absolute; top: 20px; right: 20px;">🌙 Dark Mode</button>
+
+    <section class="auth-section" style="padding: 0; width: 100%;">
+        <form>
+            <h2 style="text-align: center; margin-bottom: 25px;">Creează Cont Nou</h2>
+            
+            <!-- Câmp pentru Nume -->
+            <div class="form-group">
+                <label for="username">Nume Complet:</label>
+                <input type="text" id="username" placeholder="Prenume Nume" required>
+            </div>
+
+            <!-- Câmp pentru Email -->
+            <div class="form-group">
+                <label for="email">Adresă de Email:</label>
+                <input type="email" id="email" placeholder="nume@exemplu.com" required>
+            </div>
+
+            <!-- Câmp pentru Greutate -->
+            <div class="form-group">
+                <label for="weight">Greutate (kg):</label>
+                <input type="number" id="weight" min="30" max="250" placeholder="Ex: 75" required>
+            </div>
+
+            <!-- Câmp pentru Înălțime -->
+            <div class="form-group">
+                <label for="height">Înălțime (cm):</label>
+                <input type="number" id="height" min="100" max="250" placeholder="Ex: 180" required>
+            </div>
+            <!-- Câmp nou pentru Vârstă -->
+            <div class="form-group">
+                <label for="age">Vârstă (ani):</label>
+                <input type="number" id="age" min="10" max="100" placeholder="Ex: 25" required>
+            </div>
+
+            <!-- Câmp pentru Parolă -->
+            <div class="form-group">
+                <label for="password">Parolă:</label>
+                <input type="password" id="password" placeholder="Minim 6 caractere" required>
+            </div>
+
+            <button type="submit" class="submit-btn">Înregistrare</button>
+            
+            <p style="margin-top: 20px; text-align: center; font-size: 0.9rem;">
+                Ai deja cont? <a href="login.html" style="color: #00adb5; text-decoration: none; font-weight: bold;">Conectează-te</a>
+            </p>
+            <p style="margin-top: 10px; text-align: center; font-size: 0.9rem;">
+                <a href="index.html" style="color: #222831; text-decoration: none;">← Înapoi la prima pagină</a>
+            </p>
+        </form>
+                </form> <!-- Aici se termină cutia albă a formularului -->
+
+        <!-- Chiar sub ea, adaugi acest rând de cod: -->
+      
+        
+    </main> <!-- Aici se închide secțiunea principală a paginii -->
+
+    </section>
+    <script>
+        document.querySelector('form').addEventListener('submit', function(event) {
+            event.preventDefault(); 
+
+            const nume = document.getElementById('username').value;
+            const email = document.getElementById('email').value.trim(); // ștergem spațiile libere accidentale
+            const greutate = document.getElementById('weight').value;
+            const inaltime = document.getElementById('height').value;
+           const varsta = document.getElementById('age').value;
+
+            const parola = document.getElementById('password').value;
+
+            if (parola.length < 6) {
+                alert('Parola trebuie să aibă minimum 6 caractere!');
+                return;
+            }
+
+            // 1. Preluăm lista existentă de utilizatori din browser. 
+            // Dacă nu există niciunul, creăm o listă goală [].
+            let listaUtilizatori = JSON.parse(localStorage.getItem('utilizatori_fitlife')) || [];
+
+            // 2. VERIFICARE: Căutăm dacă există deja cineva cu același email în listă
+            const emailExistent = listaUtilizatori.find(u => u.email === email);
+
+            if (emailExistent) {
+                // Dacă l-am găsit, oprim înregistrarea și îi dăm o alertă clară
+                alert('Această adresă de email este deja folosită! Te rugăm să folosești altă adresă sau să te conectezi.');
+                return; // Oprește rularea codului de mai jos
+            }
+
+            // 3. Dacă email-ul este nou, creăm obiectul utilizatorului
+           const utilizatorNou = {
+    nume: nume,
+    email: email,
+    greutate: greutate,
+    inaltime: inaltime,
+    varsta: varsta, // <-- Aceasta este linia nouă
+    parola: parola
+};
+
+
+            // 4. Adăugăm utilizatorul nou în lista noastră
+            listaUtilizatori.push(utilizatorNou);
+
+            // 5. Salvăm lista actualizată înapoi în browser
+            localStorage.setItem('utilizatori_fitlife', JSON.stringify(listaUtilizatori));
+
+            alert('Contul tău a fost creat cu succes! Acum te poți conecta.');
+            window.location.href = 'login.html';
+        });
+    </script>
+    <script>
+        const butonTema = document.getElementById('theme-toggle');
+        const temaSalvata = localStorage.getItem('tema_site');
+        
+        if (temaSalvata === 'dark') {
+            document.body.classList.add('dark-theme');
+            butonTema.innerText = '☀️ Light Mode';
+        }
+
+        butonTema.addEventListener('click', () => {
+            document.body.classList.toggle('dark-theme');
+            if (document.body.classList.contains('dark-theme')) {
+                butonTema.innerText = '☀️ Light Mode';
+                localStorage.setItem('tema_site', 'dark');
+            } else {
+                butonTema.innerText = '🌙 Dark Mode';
+                localStorage.setItem('tema_site', 'light');
+            }
+        });
+    </script>
+
+</body>
+</html>

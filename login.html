@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Conectare - FitLife Pro</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body style="background-color: #f4f6f9; display: flex; justify-content: center; align-items: center; height: 100vh;">
+<button id="theme-toggle" class="theme-toggle-btn" style="position: absolute; top: 20px; right: 20px;">🌙 Dark Mode</button>
+
+    <section class="auth-section" style="padding: 0;">
+        <form>
+            <h2 style="text-align: center; margin-bottom: 25px;">Intră în Cont</h2>
+            
+            <div class="form-group">
+                <label for="email">Adresă de Email:</label>
+                <input type="email" id="email" placeholder="nume@exemplu.com" required>
+            </div>
+
+            <div class="form-group">
+                <label for="password">Parolă:</label>
+                <input type="password" id="password" placeholder="Introdu parola" required>
+            </div>
+
+            <button type="submit" class="submit-btn">Autentificare</button>
+            
+            <p style="margin-top: 20px; text-align: center; font-size: 0.9rem;">
+                Nu ai un cont? <a href="register.html" style="color: #00adb5; text-decoration: none; font-weight: bold;">Înregistrează-te</a>
+            </p>
+            <p style="margin-top: 10px; text-align: center; font-size: 0.9rem;">
+                <a href="index.html" style="color: #222831; text-decoration: none;">← Înapoi la prima pagină</a>
+            </p>
+        </form>
+                </form> <!-- Aici se termină cutia albă a formularului -->
+
+        <!-- Chiar sub ea, adaugi acest rând de cod: -->
+    
+        
+    </main> <!-- Aici se închide secțiunea principală a paginii -->
+
+    </section>
+    <!-- Adăugăm acest script chiar înainte de </body> -->
+        <script>
+        document.querySelector('form').addEventListener('submit', function(event) {
+            event.preventDefault(); 
+
+            const emailIntrodus = document.getElementById('email').value.trim();
+            const parolaIntrodusă = document.getElementById('password').value;
+
+            // 1. Preluăm lista de utilizatori înregistrați din browser
+            const listaUtilizatori = JSON.parse(localStorage.getItem('utilizatori_fitlife')) || [];
+
+            // 2. Căutăm utilizatorul după emailul introdus
+            const utilizatorGasit = listaUtilizatori.find(u => u.email === emailIntrodus);
+
+            if (!utilizatorGasit) {
+                alert('Nu s-a găsit niciun cont cu acest email. Te rugăm să te înregistrezi!');
+                return;
+            }
+
+            // 3. Dacă am găsit emailul, verificăm dacă și parola este corectă
+            if (parolaIntrodusă === utilizatorGasit.parola) {
+                alert(`Bine ai revenit, ${utilizatorGasit.nume}! Conectare reușită.`);
+                
+                // --- LINIILE VITALE PENTRU NAVBAR ---
+                localStorage.setItem('este_conectat', 'true');
+                localStorage.setItem('utilizator_curent', utilizatorGasit.nume); // Trimite numele către navbar!
+
+                // Redirecționăm utilizatorul către prima pagină
+                window.location.href = 'index.html';
+            } else {
+                alert('Parola este incorectă! Încearcă din nou.');
+            }
+        });
+    </script>
+
+    <script>
+        const butonTema = document.getElementById('theme-toggle');
+        const temaSalvata = localStorage.getItem('tema_site');
+        
+        if (temaSalvata === 'dark') {
+            document.body.classList.add('dark-theme');
+            butonTema.innerText = '☀️ Light Mode';
+        }
+
+        butonTema.addEventListener('click', () => {
+            document.body.classList.toggle('dark-theme');
+            if (document.body.classList.contains('dark-theme')) {
+                butonTema.innerText = '☀️ Light Mode';
+                localStorage.setItem('tema_site', 'dark');
+            } else {
+                butonTema.innerText = '🌙 Dark Mode';
+                localStorage.setItem('tema_site', 'light');
+            }
+        });
+    </script>
+
+</body>
+</html>

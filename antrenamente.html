@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FitLife Pro - Antrenamente</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .detalii-container {
+            margin-top: 40px;
+            width: 100%;
+            max-width: 1000px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        .exercitii-detalii {
+            display: none;
+            background-color: #f4f6f9;
+            padding: 30px;
+            border-radius: 12px;
+            border-left: 6px solid #00adb5;
+            text-align: left;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+            cursor: default; 
+        }
+        .exercitiu-item {
+            margin-bottom: 20px;
+            transition: opacity 0.3s;
+        }
+        .exercitiu-item:last-child {
+            margin-bottom: 0;
+        }
+        .exercitiu-item h4 {
+            color: #222831;
+            font-size: 1.3rem;
+            margin-bottom: 8px;
+        }
+        .exercitiu-item p {
+            font-size: 1rem;
+            color: #555555;
+            line-height: 1.6;
+        }
+        .card {
+            cursor: pointer;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        .card:hover {
+            box-shadow: 0 6px 15px rgba(0,0,0,0.1);
+        }
+    </style>
+</head>
+<body>
+
+    <header class="navbar">
+        <div class="logo">FitLife Pro</div>
+        <nav class="nav-links">
+            <a href="index.html">Acasă</a>
+            <a href="antrenamente.html" class="active">Antrenamente</a>
+            <a href="nutritie.html">Nutriție</a>
+        </nav>
+         <div style="display: flex; align-items: center;">
+        <button id="theme-toggle" class="theme-toggle-btn">🌙 Dark Mode</button>
+        
+        <div class="auth-buttons" id="auth-area">
+            <a href="login.html" class="login-btn">Conectare</a>
+            <a href="register.html" class="register-btn">Înregistrare</a>
+        </div>
+    </div>
+
+    </header>
+
+    <section class="services-section">
+        <h2 class="section-title">Alege Grupa Musculară</h2>
+        <p style="text-align: center; margin-top: -30px; margin-bottom: 40px; color: #666;">Apasă pe oricare secțiune de mai jos pentru a-i deschide exercițiile.</p>
+        
+        <div class="cards-container">
+            <div class="card" onclick="toggleExercitii('piept-triceps')">
+                <div class="card-content">
+                    <h3>Piept & Triceps</h3>
+                    <p>Rutina completă pentru mișcările de împins (Push).</p>
+                </div>
+            </div>
+
+            <div class="card" onclick="toggleExercitii('spate-biceps')">
+                <div class="card-content">
+                    <h3>Spate & Biceps</h3>
+                    <p>Rutina perfectă pentru mișcările de tracțiune (Pull).</p>
+                </div>
+            </div>
+
+            <div class="card" onclick="toggleExercitii('picioare-umeri')">
+                <div class="card-content">
+                    <h3>Picioare & Umeri</h3>
+                    <p>Antrenamentul ideal pentru trenul inferior și deltoizi.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="detalii-container">
+            <!-- Detalii Piept & Triceps -->
+            <div id="piept-triceps" class="exercitii-detalii">
+                <div class="exercitiu-item">
+                    <label style="display: flex; align-items: center; gap: 10px; cursor: pointer;">
+                        <input type="checkbox" onchange="bifeazaExercitiu(this)" style="transform: scale(1.3); cursor: pointer;">
+                        <h4 style="margin: 0;">1. Împins cu haltera de pe bancă orizontală</h4>
+                    </label>
+                    <p style="margin-top: 10px;"><strong>Execuție:</strong> Coboară haltera controlat până atingi ușor mijlocul pieptului, menținând coatele la un unghi de 45 de grade față de corp.</p>
+                    <button type="button" class="btn-pauza" onclick="pornesteCronometru(60, this)" style="margin-top: 8px; padding: 5px 12px; background: #00adb5; color: white; border: none; border-radius: 4px; cursor: pointer; font-size: 0.85rem;">⏱️ Pornește Pauza (60s)</button>
+                </div>
+                <hr style="margin: 20px 0; border: 0; border-top: 1px solid #ddd;">
+                <div class="exercitiu-item">
+                    <label style="display: flex; align-items: center; gap: 10px; cursor: pointer;">
+                        <input type="checkbox" onchange="bifeazaExercitiu(this)" style="transform: scale(1.3); cursor: pointer;">
+                        <h4 style="margin: 0;">2. Extensii la scripete pentru triceps</h4>
+                    </label>
+                    <p style="margin-top: 10px;"><strong>Execuție:</strong> Menține spatele drept și coatele complet blocate pe lângă corp.</p>
+                    <button type="button" class="btn-pauza" onclick="pornesteCronometru(60, this)" style="margin-top: 8px; padding: 5px 12px; background: #00adb5; color: white; border: none; border-radius: 4px; cursor: pointer; font-size: 0.85rem;">⏱️ Pornește Pauza (60s)</button>
+                </div>
+            </div>
+
+            <!-- Detalii Spate & Biceps -->
+            <div id="spate-biceps" class="exercitii-detalii">
+                <div class="exercitiu-item">
+                    <label style="display: flex; align-items: center; gap: 10px; cursor: pointer;">
+                        <input type="checkbox" onchange="bifeazaExercitiu(this)" style="transform: scale(1.3); cursor: pointer;">
+                        <h4 style="margin: 0;">1. Tracțiuni la helcometru (Lat Pulldown)</h4>
+                    </label>
+                    <p style="margin-top: 10px;"><strong>Execuție:</strong> Apucă bara puțin mai lat decât umerii. Trage bara în jos către partea superioară a pieptului.</p>
+                    <button type="button" class="btn-pauza" onclick="pornesteCronometru(60, this)" style="margin-top: 8px; padding: 5px 12px; background: #00adb5; color: white; border: none; border-radius: 4px; cursor: pointer; font-size: 0.85rem;">⏱️ Pornește Pauza (60s)</button>
+                </div>
+                <hr style="margin: 20px 0; border: 0; border-top: 1px solid #ddd;">
+                <div class="exercitiu-item">
+                    <label style="display: flex; align-items: center; gap: 10px; cursor: pointer;">
+                        <input type="checkbox" onchange="bifeazaExercitiu(this)" style="transform: scale(1.3); cursor: pointer;">
+                        <h4 style="margin: 0;">2. Flexii alternate cu gantere pentru biceps</h4>
+                    </label>
+                    <p style="margin-top: 10px;"><strong>Execuție:</strong> Stai în picioare cu palmele orientate spre corp. Ridică pe rând câte o ganteră.</p>
+                    <button type="button" class="btn-pauza" onclick="pornesteCronometru(60, this)" style="margin-top: 8px; padding: 5px 12px; background: #00adb5; color: white; border: none; border-radius: 4px; cursor: pointer; font-size: 0.85rem;">⏱️ Pornește Pauza (60s)</button>
+                </div>
+            </div>
+
+            <!-- Detalii Picioare & Umeri -->
+            <div id="picioare-umeri" class="exercitii-detalii">
+                <div class="exercitiu-item">
+                    <label style="display: flex; align-items: center; gap: 10px; cursor: pointer;">
+                        <input type="checkbox" onchange="bifeazaExercitiu(this)" style="transform: scale(1.3); cursor: pointer;">
+                        <h4 style="margin: 0;">1. Genuflexiuni cu haltera în spate</h4>
+                    </label>
+                    <p style="margin-top: 10px;"><strong>Execuție:</strong> Coboară bazinul controlat împingând șoldurile înapoi. Menține spatele drept și coboară până când coapsele sunt paralele cu solul.</p>
+                    <button type="button" class="btn-pauza" onclick="pornesteCronometru(60, this)" style="margin-top: 8px; padding: 5px 12px; background: #00adb5; color: white; border: none; border-radius: 4px; cursor: pointer; font-size: 0.85rem;">⏱️ Pornește Pauza (60s)</button>
+                </div>
+                <hr style="margin: 20px 0; border: 0; border-top: 1px solid #ddd;">
+                <div class="exercitiu-item">
+                    <label style="display: flex; align-items: center; gap: 10px; cursor: pointer;">
+                        <input type="checkbox" onchange="bifeazaExercitiu(this)" style="transform: scale(1.3); cursor: pointer;">
+                        <h4 style="margin: 0;">2. Presă militară cu gantere (Umeri)</h4>
+                    </label>
+                    <p style="margin-top: 10px;"><strong>Execuție:</strong> Din poziția șezând, ridică ganterele la nivelul urechilor. Împinge greutățile deasupra capului.</p>
+                    <button type="button" class="btn-pauza" onclick="pornesteCronometru(60, this)" style="margin-top: 8px; padding: 5px 12px; background: #00adb5; color: white; border: none; border-radius: 4px; cursor: pointer; font-size: 0.85rem;">⏱️ Pornește Pauza (60s)</button>
+                </div>
+            </div>
+        </div>
+        <!-- --- SECȚIUNEA JURNAL ANTRENAMENT --- -->
+        <div style="margin-top: 60px; max-width: 600px; margin-left: auto; margin-right: auto; background-color: #393e46; padding: 30px; border-radius: 12px; box-shadow: 0 4px 15px rgba(0,0,0,0.2); text-align: left;">
+            <h3 style="color: #00adb5; font-size: 1.5rem; margin-bottom: 20px; text-align: center;">📝 Jurnalul Tău de Astăzi</h3>
+            
+            <form id="jurnal-form" style="display: flex; flex-direction: column; gap: 15px;">
+                <div class="form-group" style="margin-bottom: 0;">
+                    <label style="color: #ffffff; font-weight: bold; margin-bottom: 5px;">Exercițiu</label>
+                    <input type="text" id="jurnal-exercitiu" placeholder="Ex: Împins cu haltera" required style="padding: 10px; border-radius: 5px; border: none; font-size: 1rem; width: 100%;">
+                </div>
+                
+                <div style="display: flex; gap: 15px;">
+                    <div class="form-group" style="flex: 1; margin-bottom: 0;">
+                        <label style="color: #ffffff; font-weight: bold; margin-bottom: 5px;">Seturi</label>
+                        <input type="number" id="jurnal-seturi" placeholder="Ex: 4" required min="1" style="padding: 10px; border-radius: 5px; border: none; font-size: 1rem; width: 100%;">
+                    </div>
+                    <div class="form-group" style="flex: 1; margin-bottom: 0;">
+                        <label style="color: #ffffff; font-weight: bold; margin-bottom: 5px;">Repetări</label>
+                        <input type="number" id="jurnal-repetari" placeholder="Ex: 10" required min="1" style="padding: 10px; border-radius: 5px; border: none; font-size: 1rem; width: 100%;">
+                    </div>
+                    <div class="form-group" style="flex: 1; margin-bottom: 0;">
+                        <label style="color: #ffffff; font-weight: bold; margin-bottom: 5px;">Greutate (kg)</label>
+                        <input type="number" id="jurnal-greutate" placeholder="Ex: 60" required min="0" style="padding: 10px; border-radius: 5px; border: none; font-size: 1rem; width: 100%;">
+                    </div>
+                </div>
+                
+                <button type="submit" style="margin-top: 10px; width: 100%; padding: 12px; background-color: #00adb5; color: white; border: none; border-radius: 25px; font-weight: bold; cursor: pointer;">Adaugă în Jurnal</button>
+            </form>
+
+            <div id="zona-tabel" style="margin-top: 30px; display: none;">
+                <h4 style="color: #ffffff; margin-bottom: 10px; border-bottom: 1px solid #555; padding-bottom: 5px;">Exerciții Înregistrate:</h4>
+                <table style="width: 100%; border-collapse: collapse; color: #ffffff; font-size: 0.95rem;">
+                    <thead>
+                        <tr style="border-bottom: 2px solid #00adb5; text-align: left;">
+                            <th style="padding: 8px;">Exercițiu</th>
+                            <th style="padding: 8px;">Seturi</th>
+                            <th style="padding: 8px;">Repetări</th>
+                            <th style="padding: 8px;">Greutate</th>
+                        </tr>
+                    </thead>
+                    <tbody id="lista-jurnal">
+                        <!-- Rândurile vor fi inserate prin JavaScript -->
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </section>
+
+    <div id="notificare-pauza" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.5); justify-content: center; align-items: center; z-index: 9999;">
+        <div style="background: white; padding: 30px; border-radius: 12px; text-align: center; box-shadow: 0 4px 20px rgba(0,0,0,0.2); max-width: 350px; width: 90%;">
+            <h3 style="color: #222831; margin-bottom: 10px;">⏰ Pauza s-a terminat!</h3>
+            <p style="color: #555; margin-bottom: 20px;">Treci la următorul set! 💪</p>
+            <button onclick="inchideNotificare()" style="padding: 10px 25px; background: #00adb5; color: white; border: none; border-radius: 25px; font-weight: bold; cursor: pointer;">Am înțeles</button>
+        </div>
+    </div>
+
+    <footer>
+        <p style="text-align: center; padding: 20px; color: #666;">&copy; 2026 FitLife Pro. Toate drepturile rezervate.</p>
+    </footer>
+
+    <script>
+        window.addEventListener('DOMContentLoaded', () => {
+            const esteConectat = localStorage.getItem('este_conectat');
+            const numeUtilizator = localStorage.getItem('utilizator_curent');
+
+            if (esteConectat === 'true' && numeUtilizator) {
+                const authArea = document.getElementById('auth-area');
+                authArea.innerHTML = `
+                    <span style="font-weight: bold; color: #00adb5; font-size: 0.95rem;">Salut, ${numeUtilizator}!</span>
+                    <a href="#" id="logout-btn" style="color: #ffffff; text-decoration: none; font-size: 0.9rem; margin-left: 10px; border: 1px solid #ffffff; padding: 5px 12px; border-radius: 15px; cursor: pointer;">Deconectare</a>
+                `;
+
+                document.getElementById('logout-btn').addEventListener('click', (e) => {
+                    e.preventDefault();
+                    localStorage.removeItem('este_conectat');
+                    localStorage.removeItem('utilizator_curent');
+                    window.location.reload();
+                });
+            }
+        });
+
+        function toggleExercitii(idSectiune) {
+            const toateSectiunile = document.querySelectorAll('.exercitii-detalii');
+            toateSectiunile.forEach(sectiune => {
+                if (sectiune.id === idSectiune) {
+                    sectiune.style.display = sectiune.style.display === 'block' ? 'none' : 'block';
+                } else {
+                    sectiune.style.display = 'none';
+                }
+            });
+        }
+
+        function bifeazaExercitiu(checkbox) {
+            const elementItem = checkbox.closest('.exercitiu-item');
+            if (checkbox.checked) {
+                elementItem.style.opacity = "0.5";
+                elementItem.style.textDecoration = "line-through";
+            } else {
+                elementItem.style.opacity = "1";
+                elementItem.style.textDecoration = "none";
+            }
+        }
+
+        function pornesteCronometru(secunde, buton) {
+            if (buton.disabled) return;
+            
+            buton.disabled = true; 
+            buton.style.background = "#888888"; 
+            
+            let timpRamas = secunde;
+
+            const interval = setInterval(() => {
+                timpRamas--;
+                buton.innerText = `⏱️ Pauză: ${timpRamas}s`;
+
+                if (timpRamas <= 0) {
+                    clearInterval(interval); 
+                    buton.disabled = false;  
+                    buton.style.background = "#00adb5"; 
+                    buton.innerText = "⏱️ Pornește Pauza (60s)";
+                    document.getElementById('notificare-pauza').style.display = 'flex';
+                }
+            }, 1000);
+        }
+
+        function inchideNotificare() {
+            document.getElementById('notificare-pauza').style.display = 'none';
+        }
+
+        document.getElementById('jurnal-form').addEventListener('submit', function(event) {
+            event.preventDefault();
+
+            const exercitiu = document.getElementById('jurnal-exercitiu').value;
+            const seturi = document.getElementById('jurnal-seturi').value;
+            const repetari = document.getElementById('jurnal-repetari').value;
+            const greutate = document.getElementById('jurnal-greutate').value;
+
+            const tabelBody = document.getElementById('lista-jurnal');
+            const randNou = document.createElement('tr');
+            randNou.style.borderBottom = "1px solid #555";
+
+            randNou.innerHTML = `
+                <td style="padding: 8px;">${exercitiu}</td>
+                <td style="padding: 8px;">${seturi}</td>
+                <td style="padding: 8px;">${repetari}</td>
+                <td style="padding: 8px;">${greutate} kg</td>
+            `;
+
+            tabelBody.appendChild(randNou);
+            document.getElementById('zona-tabel').style.display = 'block';
+            document.getElementById('jurnal-form').reset();
+        });
+                // LOGICA GLOBALĂ PENTRU DARK MODE
+        const butonTema = document.getElementById('theme-toggle');
+        const temaSalvata = localStorage.getItem('tema_site');
+        
+        if (temaSalvata === 'dark') {
+            document.body.classList.add('dark-theme');
+            butonTema.innerText = '☀️ Light Mode';
+        }
+
+        butonTema.addEventListener('click', () => {
+            document.body.classList.toggle('dark-theme');
+            if (document.body.classList.contains('dark-theme')) {
+                butonTema.innerText = '☀️ Light Mode';
+                localStorage.setItem('tema_site', 'dark');
+            } else {
+                butonTema.innerText = '🌙 Dark Mode';
+                localStorage.setItem('tema_site', 'light');
+            }
+        });
+
+    </script>
+</body>
+</html>

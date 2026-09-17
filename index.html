@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FitLife - Jurnalul Tău de Fitness</title>
+    <!-- Conectarea fișierului de stil extern -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+      <header class="navbar">
+    <div class="logo">FitLife Pro</div>
+    <nav class="nav-links">
+        <a href="index.html" class="active">Acasă</a>
+        <a href="antrenamente.html">Antrenamente</a>
+        <a href="nutritie.html">Nutriție</a>
+    </nav>
+    
+    <!-- AICI PUNEM BUTONUL NOU PENTRU SCHIMBAREA TEMEI -->
+    <div style="display: flex; align-items: center;">
+        <button id="theme-toggle" class="theme-toggle-btn">🌙 Dark Mode</button>
+        
+        <div class="auth-buttons" id="auth-area">
+            <a href="login.html" class="login-btn">Conectare</a>
+            <a href="register.html" class="register-btn">Înregistrare</a>
+        </div>
+    </div>
+</header>
+
+    <main class="hero-section">
+        <h1>Transformă-ți Corpul și Viața</h1>
+        <p>Monitorizează-ți antrenamentele zilnice, calculează-ți caloriile și atinge-ți obiectivele mai rapid ca niciodată.</p>
+        <button class="cta-btn">Creează Cont Gratuit</button>
+    </main>
+       <!-- Secțiunea de Servicii/Funcționalități cu cele 3 imagini locale -->
+    <section class="services-section">
+        <h2 class="section-title">Ce poți face în aplicația FitLife Pro?</h2>
+        
+        <div class="cards-container">
+            
+            <!-- Cardul 1: Antrenamente -->
+            <div class="card">
+                <img src="sala.jpg" alt="Antrenamente Sală">
+                <div class="card-content">
+                    <h3>Jurnal Antrenamente</h3>
+                    <p>Adaugă exercițiile, seturile și kilogramele folosite. Monitorizează-ți istoricul de forță.</p>
+                </div>
+            </div>
+
+            <!-- Cardul 2: Nutriție -->
+            <div class="card">
+                <img src="nutritie.jpg" alt="Nutriție și Calorii">
+                <div class="card-content">
+                    <h3>Calculator Calorii</h3>
+                    <p>Înregistrează tot ce mănânci într-o zi și menține-te în deficit sau surplus caloric.</p>
+                </div>
+            </div>
+
+            <!-- Cardul 3: Progres -->
+            <div class="card">
+                <img src="progres.jpg" alt="Progres Fitness">
+                <div class="card-content">
+                    <h3>Evoluție & Progres</h3>
+                    <p>Urmărește grafice clare cu greutatea ta corporală și evoluția recordurilor personale.</p>
+                </div>
+            </div>
+
+        </div>
+    </section>
+    <!-- Adaugă acest script chiar înainte de </body> în index.html -->
+       <script>
+        window.addEventListener('DOMContentLoaded', () => {
+            const esteConectat = localStorage.getItem('este_conectat');
+            const numeUtilizator = localStorage.getItem('utilizator_curent');
+
+            if (esteConectat === 'true' && numeUtilizator) {
+                const authArea = document.getElementById('auth-area');
+                authArea.innerHTML = `
+                    <span style="font-weight: bold; color: #00adb5; font-size: 0.95rem;">Salut, ${numeUtilizator}!</span>
+                    <a href="#" id="logout-btn" style="color: #ffffff; text-decoration: none; font-size: 0.9rem; margin-left: 10px; border: 1px solid #ffffff; padding: 5px 12px; border-radius: 15px; cursor: pointer;">Deconectare</a>
+                `;
+
+                document.getElementById('logout-btn').addEventListener('click', (e) => {
+                    e.preventDefault();
+                    localStorage.removeItem('este_conectat');
+                    localStorage.removeItem('utilizator_curent');
+                    window.location.reload();
+                });
+            }
+        });
+                // ==========================================
+        // LOGICA PENTRU DARK MODE / LIGHT MODE
+        // ==========================================
+        const butonTema = document.getElementById('theme-toggle');
+
+        // 1. Verificăm dacă utilizatorul a avut setat Dark Mode în trecut
+        const temaSalvata = localStorage.getItem('tema_site');
+        if (temaSalvata === 'dark') {
+            document.body.classList.add('dark-theme');
+            butonTema.innerText = '☀️ Light Mode';
+        }
+
+        // 2. Ascultăm când utilizatorul dă click pe buton
+        butonTema.addEventListener('click', () => {
+            // Schimbăm clasa dark-theme pe tot corpul paginii (body)
+            document.body.classList.toggle('dark-theme');
+
+            // Verificăm ce temă este activă acum și schimbăm textul butonului + salvăm în memorie
+            if (document.body.classList.contains('dark-theme')) {
+                butonTema.innerText = '☀️ Light Mode';
+                localStorage.setItem('tema_site', 'dark'); // Ține minte că e Dark Mode
+            } else {
+                butonTema.innerText = '🌙 Dark Mode';
+                localStorage.setItem('tema_site', 'light'); // Ține minte că e Light Mode
+            }
+        });
+
+    </script>
+
+
+</body>
+</html>

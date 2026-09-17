@@ -1,0 +1,749 @@
+/* Resetare margini implicite*/
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* Stil pentru bara de navigare */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 5%;
+    background-color: #1a1a1a;
+    color: #ffffff;
+}
+
+.nav-links a {
+    color: #ffffff;
+    text-decoration: none;
+    margin-right: 20px;
+    font-weight: bold;
+    transition: color 0.3s;
+}
+
+.nav-links a:hover {
+    color: #00adb5;
+}
+/* Stil pentru link-ul paginii pe care te afli în momentul respectiv */
+.nav-links a.active {
+    color: #00adb5;
+}
+
+/* Zona butoanelor din dreapta */
+.auth-buttons {
+    display: flex;
+    align-items: center;
+    gap: 15px; /* Spațiu între cele două butoane */
+}
+
+.login-btn {
+    color: #ffffff;
+    text-decoration: none;
+    font-weight: bold;
+    transition: color 0.3s;
+}
+
+.login-btn:hover {
+    color: #00adb5;
+}
+
+.register-btn {
+    padding: 8px 18px;
+    background-color: #00adb5;
+    color: #ffffff;
+    text-decoration: none;
+    font-weight: bold;
+    border-radius: 20px;
+    transition: background-color 0.3s, transform 0.2s;
+}
+
+.register-btn:hover {
+    background-color: #007c82;
+    transform: scale(1.05);
+}
+
+
+/* Stil pentru secțiunea principală (Hero) */
+.hero-section {
+    height: 80vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    background: linear-gradient(135deg, #393e46, #222831);
+    color: #ffffff;
+    padding: 20px;
+}
+
+.hero-section h1 {
+    font-size: 3rem;
+    margin-bottom: 20px;
+}
+
+.hero-section p {
+    font-size: 1.2rem;
+    margin-bottom: 30px;
+    max-width: 600px;
+    color: #eeeeee;
+}
+
+/* Stil pentru buton */
+.cta-btn {
+    padding: 12px 30px;
+    font-size: 1rem;
+    font-weight: bold;
+    color: #ffffff;
+    background-color: #00adb5;
+    border: none;
+    border-radius: 25px;
+    cursor: pointer;
+    transition: transform 0.2s, background-color 0.3s;
+}
+
+.cta-btn:hover {
+    background-color: #007c82;
+    transform: scale(1.05); /* Efect de mărire ușoară */
+}
+/* Stil pentru Secțiunea de Autentificare */
+.auth-section {
+    padding: 60px 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #f4f6f9; /* Un fundal gri foarte deschis pentru contrast */
+    color: #222831;
+}
+
+.auth-section h2 {
+    font-size: 2rem;
+    margin-bottom: 30px;
+}
+
+/* Stil pentru formularul propriu-zis */
+.auth-section form {
+    background-color: #ffffff; /* Formularul va fi o cutie albă */
+    padding: 40px;
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1); /* Umbră discretă în jurul cutiei */
+    width: 100%;
+    max-width: 400px; /* Să nu se lățească prea mult pe ecrane mari */
+}
+
+/* Gruparea fiecărui rând (etichetă + căsuță) */
+.form-group {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 20px;
+}
+
+.form-group label {
+    font-weight: bold;
+    margin-bottom: 8px;
+    font-size: 0.9rem;
+}
+
+/* Stil pentru căsuțele unde se tastează */
+.form-group input {
+    padding: 12px;
+    border: 1px solid #cccccc;
+    border-radius: 5px;
+    font-size: 1rem;
+    outline: none;
+    transition: border-color 0.3s;
+}
+
+/* Ce se întâmplă când utilizatorul dă click în interiorul căsuței */
+.form-group input:focus {
+    border-color: #00adb5; /* Se face albastră, asortată cu butonul tău */
+}
+
+/* Stil pentru butonul din formular */
+.submit-btn {
+    width: 100%;
+    padding: 12px;
+    background-color: #222831; /* Un buton închis la culoare pentru contrast */
+    color: #ffffff;
+    border: none;
+    border-radius: 5px;
+    font-size: 1rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.submit-btn:hover {
+    background-color: #393e46; /* Se deschide puțin la culoare la hover */
+}
+/* --- STIL SECȚIUNE CARDURI --- */
+.services-section {
+    padding: 60px 10%;
+    background-color: #ffffff; /* Fundal alb curat pentru această zonă */
+    text-align: center;
+}
+
+.section-title {
+    font-size: 2rem;
+    color: #222831;
+    margin-bottom: 40px;
+}
+
+/* Containerul aliniază cele 3 carduri pe orizontală */
+.cards-container {
+    display: flex;
+    justify-content: space-between;
+    gap: 30px; /* Spațiu între carduri */
+}
+
+/* Stilul pentru o singură cutie de card */
+.card {
+    background-color: #f4f6f9;
+    border-radius: 12px;
+    overflow: hidden; /* Taie colțurile imaginii dacă depășesc marginea rotunjită a cardului */
+    box-shadow: 0 4px 10px rgba(0,0,0,0.05); /* Umbră discretă */
+    flex: 1; /* Forțează cele 3 carduri să aibă lățimi egale în mod automat */
+    transition: transform 0.3s;
+}
+
+/* Efect de plutire când pui mouse-ul pe un card */
+.card:hover {
+    transform: translateY(-8px);
+}
+
+/* Controlăm dimensiunea imaginilor din carduri */
+.card img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover; /* Taie inteligent din imagine ca să se încadreze perfect fără să se deformeze */
+}
+
+/* Spațierea textului din interiorul cardului */
+.card-content {
+    padding: 20px;
+    text-align: left;
+}
+
+.card-content h3 {
+    font-size: 1.3rem;
+    color: #222831;
+    margin-bottom: 10px;
+}
+
+.card-content p {
+    font-size: 0.95rem;
+    color: #555555;
+    line-height: 1.5; /* Spațierea dintre rândurile de text */
+}
+/* --- SCHIMBARE CURSOR PENTRU ELEMENTE INTERACTIVE --- */
+
+/* Pentru butonul mare din secțiunea Hero și cel din formulare */
+.cta-btn, .submit-btn {
+    cursor: pointer; /* Transformă săgeata mouse-ului într-o mână care dă click */
+}
+
+/* Pentru orice element care are clasa de card (dacă vrei ca tot cardul să pară că se poate apăsa) */
+.card {
+    cursor: pointer;
+}
+/* Schimbă cursorul în mânuță pentru căsuțele de introducere date și meniurile derulante */
+/* Forțează mânuța (pointer) strict pe săgețile de sus/jos din căsuțele de numere */
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+    cursor: pointer;
+}
+/* Pune mânuța doar pe meniurile derulante (Gen și Nivel de activitate) */
+.form-group select {
+    cursor: pointer;
+}
+
+/* Păstrează mânuța strict pe săgețile de sus/jos de la numere */
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+    cursor: pointer;
+}
+/* --- EFECT DE MĂRIRE PENTRU LINK-URILE DIN FORMULARE --- */
+.auth-section form a {
+    display: inline-block; /* Permite textului să se mărească corect */
+    color: #00adb5; /* Culoarea turcoaz asortată */
+    text-decoration: none;
+    font-weight: bold;
+    cursor: pointer;
+    transition: transform 0.2s ease, color 0.2s ease;
+}
+
+/* Efectul când treci cu mouse-ul peste link */
+.auth-section form a:hover {
+    transform: scale(1.08); /* Se mărește discret */
+    color: #007c82; /* Se închide puțin la culoare la hover */
+}
+/* --- EFECT DE MĂRIRE PENTRU LINK-UL DE ÎNTOARCERE ACASĂ --- */
+.auth-section > a {
+    display: inline-block;
+    color: #ffffff; /* Text alb ca să se vadă pe fundalul închis */
+    margin-top: 20px;
+    text-decoration: underline;
+    cursor: pointer;
+    transition: transform 0.2s ease, color 0.2s ease;
+}
+
+/* Efectul de mărire pentru link-ul de întoarcere */
+.auth-section > a:hover {
+    transform: scale(1.05);
+    color: #00adb5; /* Se face turcoaz când pui mouse-ul pe el */
+}
+/* ==========================================
+   STILURI PENTRU DARK MODE / LIGHT MODE
+   ========================================== */
+
+/* Definim culorile de bază pentru tema întunecată */
+body.dark-theme {
+    background-color: #222831 !important;
+    color: #eeeeee !important;
+}
+
+/* Schimbăm culoarea secțiunilor când tema este activă */
+body.dark-theme .services-section,
+body.dark-theme .auth-section,
+body.dark-theme .exercitii-detalii {
+    background-color: #222831 !important;
+    color: #eeeeee !important;
+}
+
+/* Cardurile și formularele devin gri închis în loc de alb */
+body.dark-theme .card,
+body.dark-theme .auth-section form,
+body.dark-theme #rezultat-calorii {
+    background-color: #393e46 !important;
+    color: #eeeeee !important;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3) !important;
+}
+
+/* Textele secundare sau titlurile din interiorul cardurilor */
+body.dark-theme .card h3,
+body.dark-theme .card p,
+body.dark-theme .exercitiu-item h4,
+body.dark-theme .exercitiu-item p,
+body.dark-theme .section-title,
+body.dark-theme #rezultat-calorii h3 {
+    color: #ffffff !important;
+}
+
+/* Inputurile și căsuțele de select din formulare */
+body.dark-theme .form-group input,
+body.dark-theme .form-group select {
+    background-color: #222831 !important;
+    color: #ffffff !important;
+    border: 1px solid #555555 !important;
+}
+
+/* Stil pentru butonul mic de schimbat tema din Navbar */
+.theme-toggle-btn {
+    background: none;
+    border: 1px solid #00adb5;
+    color: #00adb5;
+    padding: 6px 12px;
+    border-radius: 15px;
+    cursor: pointer;
+    font-weight: bold;
+    font-size: 0.85rem;
+    transition: all 0.3s;
+    margin-right: 15px; /* Spațiu până la butoanele de login/logout */
+}
+
+.theme-toggle-btn:hover {
+    background-color: #00adb5;
+    color: #ffffff;
+}
+/* ==========================================
+   FORȚARE CULORI SECȚIUNE HERO (PAGINA PRINCIPALĂ)
+   ========================================== */
+
+/* 1. Cum arată secțiunea Hero pe Light Mode (Implicit) */
+.hero-section {
+    background: #ffffff !important; /* O facem complet albă */
+    color: #222831 !important; /* Schimbăm textul în text închis, ca să se poată citi pe alb */
+}
+
+/* Facem și subtitlul din Hero să fie lizibil pe fundal alb */
+.hero-section p {
+    color: #555555 !important;
+}
+
+/* 2. Cum arată secțiunea Hero DOAR CÂND se activează Dark Mode */
+body.dark-theme .hero-section {
+    background: linear-gradient(135deg, #393e46, #222831) !important; /* Revine la negrul/griul tău original */
+    color: #ffffff !important; /* Textul revine la alb */
+}
+
+body.dark-theme .hero-section p {
+    color: #eeeeee !important;
+}
+    /* --- ADAUGĂ LA FINALUL FIȘIERULUI STYLE.CSS --- */
+
+/* Wrapper-ul care le pune stânga-dreapta */
+.nutritie-calculatoare-wrapper {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    gap: 30px; 
+    flex-wrap: wrap;
+    margin: 30px auto;
+    max-width: 1100px;
+    padding: 0 15px;
+}
+
+/* Stilul de bază pentru ambele calculatoare */
+.calculator-box {
+    flex: 1;
+    min-width: 290px;
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    background-color: #ffffff;
+    color: #222222;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.input-grup-macro { margin-bottom: 12px; display: flex; flex-direction: column; }
+.input-grup-macro label { font-weight: bold; margin-bottom: 5px; }
+.input-grup-macro input { padding: 10px; border-radius: 6px; border: 1px solid #ccc; font-size: 16px; }
+
+#btn-calculeaza-macro {
+    width: 100%;
+    padding: 12px;
+    background-color: #00adb5;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    font-size: 16px;
+    cursor: pointer;
+    font-weight: bold;
+}
+#btn-calculeaza-macro:hover { background-color: #008c94; }
+
+#rezultat-macro-box { margin-top: 15px; padding: 12px; background: rgba(0,0,0,0.04); border-radius: 6px; }
+.macro-linie { display: flex; justify-content: space-between; margin-bottom: 6px; font-size: 16px; }
+.macro-valoare { font-weight: bold; color: #00adb5; }
+
+/* REPARAREA PENTRU DARK MODE-UL TĂU */
+body.dark-theme .calculator-box {
+    background-color: #1e1e24 !important;
+    color: #eeeeee !important;
+    border: 1px solid #333;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+}
+body.dark-theme #rezultat-macro-box {
+    background: rgba(255, 255, 255, 0.05);
+}
+/* ========================================================================= */
+/* ALINIERE ȘI ASPECT PENTRU CALCULATOARELE DIN SECȚIUNEA NUTRIȚIE          */
+/* ========================================================================= */
+
+/* Pune cele două calculatoare în paralel (stânga-dreapta) */
+.nutritie-calculatoare-wrapper {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 40px; 
+    flex-wrap: wrap; /* Pe telefoane le pune automat unul sub altul ca să nu se strice site-ul */
+    margin: 40px auto;
+    max-width: 1200px;
+    padding: 0 20px;
+}
+
+/* Stilul general de bază pentru cutia fiecărui calculator */
+.calculator-box {
+    flex: 1;
+    min-width: 320px;
+    max-width: 500px;
+    padding: 25px;
+    border-radius: 12px;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+    background-color: #ffffff;
+    color: #222222;
+    transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+}
+
+/* Efect fluid pentru tabelul noului calculator */
+#rezultat-macro-box {
+    transition: background-color 0.3s ease;
+}
+
+/* ========================================================================= */
+/* LOGICA DE LOGARE LA TEMA ÎNTUNECATĂ (DARK MODE)                           */
+/* ========================================================================= */
+
+/* Schimbă fundalul și textul pentru ambele calculatoare pe modul nocturn */
+body.dark-theme .calculator-box {
+    background-color: #1e1e24 !important;
+    color: #eeeeee !important;
+    border: 1px solid #333333;
+    box-shadow: 0 5px 25px rgba(0, 0, 0, 0.5);
+}
+
+/* Adaptează fundalul zonei de rezultate a macronutrienților */
+body.dark-theme #rezultat-macro-box {
+    background: rgba(255, 255, 255, 0.05) !important;
+}
+
+/* Adaptează fundalul și textul zonei de rezultate a caloriilor */
+body.dark-theme #rezultat-calorii {
+    background: #1e1e24 !important;
+    border: 1px solid #333333;
+    box-shadow: 0 5px 25px rgba(0, 0, 0, 0.5);
+}
+
+body.dark-theme #rezultat-calorii h3,
+body.dark-theme #rezultat-calorii p,
+body.dark-theme #rezultat-calorii span {
+    color: #eeeeee !important;
+}
+
+/* Culori mai închise și plăcute la ochi pentru cutiile de deficit/surplus în Dark Mode */
+body.dark-theme .zona-slabire-box {
+    background-color: #3b1818 !important;
+}
+
+body.dark-theme .zona-masa-box {
+    background-color: #142e1b !important;
+}
+/* --- ASCUNDEREA SĂGEȚILOR DIN TOATE CĂSUȚELE DE TIP NUMĂR --- */
+
+/* Pentru browserele Chrome, Safari, Edge și Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    appearance: none;
+    margin: 0;
+}
+
+/* Pentru browserul Firefox */
+input[type=number] {
+    -moz-appearance: textfield;
+    appearance: textfield;
+}/* ========================================================================= */
+/* INTERFAȚĂ MODERNĂ CHAT AI - DESIGN PREMIUM (LIGHT & DARK MODE)          */
+/* ========================================================================= */
+
+.ai-chat-section {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    margin: 50px auto 20px auto;
+    padding: 0 20px;
+}
+
+/* Cardul principal de Chat */
+.chat-card {
+    width: 100%;
+    max-width: 680px;
+    background: #ffffff;
+    border-radius: 16px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05), 0 1px 3px rgba(0, 0, 0, 0.02);
+    overflow: hidden;
+    border: 1px solid #eef2f5;
+    transition: all 0.3s ease;
+}
+
+/* Header-ul ferestrei de Chat */
+.chat-header {
+    background: #1a1a1a;
+    color: #ffffff;
+    padding: 16px 24px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.status-dot {
+    width: 9px;
+    height: 9px;
+    background-color: #00adb5;
+    border-radius: 50%;
+    display: inline-block;
+    position: relative;
+    box-shadow: 0 0 10px #00adb5;
+    animation: pulseGlow 2s infinite;
+}
+
+@keyframes pulseGlow {
+    0% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(0, 173, 181, 0.5); }
+    70% { transform: scale(1); box-shadow: 0 0 0 6px rgba(0, 173, 181, 0); }
+    100% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(0, 173, 181, 0); }
+}
+
+.chat-header h3 {
+    margin: 0;
+    font-size: 1.05rem;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+}
+
+/* Zona interioară de mesaje */
+.chat-box {
+    height: 400px;
+    overflow-y: auto;
+    padding: 24px;
+    background: #f8fafc;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    scroll-behavior: smooth;
+}
+
+/* Scrollbar personalizat și discret */
+.chat-box::-webkit-scrollbar {
+    width: 5px;
+}
+.chat-box::-webkit-scrollbar-track {
+    background: transparent;
+}
+.chat-box::-webkit-scrollbar-thumb {
+    background: #e2e8f0;
+    border-radius: 10px;
+}
+
+/* Bulele de text generale */
+.user-msg, .ai-msg {
+    max-width: 75%;
+    padding: 12px 18px;
+    border-radius: 14px;
+    line-height: 1.6;
+    font-size: 0.95rem;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.01);
+    transition: all 0.2s ease;
+}
+
+/* Mesajele trimise de Utilizator (Dreapta) */
+.user-msg {
+    background: #00adb5;
+    color: #ffffff;
+    align-self: flex-end;
+    border-bottom-right-radius: 2px;
+}
+.user-msg strong {
+    color: rgba(255, 255, 255, 0.9);
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    display: block;
+    margin-bottom: 4px;
+}
+
+/* Mesajele trimise de AI (Stânga) */
+.ai-msg {
+    background: #ffffff;
+    color: #2d3748;
+    align-self: flex-start;
+    border-bottom-left-radius: 2px;
+    border: 1px solid #edf2f7;
+}
+.ai-msg strong {
+    color: #00adb5;
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    display: block;
+    margin-bottom: 4px;
+}
+
+/* Zona de tastare de jos */
+.chat-input-area {
+    display: flex;
+    padding: 16px 24px;
+    background: #ffffff;
+    border-top: 1px solid #edf2f7;
+    gap: 12px;
+}
+
+.chat-input-area input {
+    flex-grow: 1;
+    padding: 14px 18px;
+    border: 1px solid #e2e8f0;
+    border-radius: 24px;
+    outline: none;
+    font-size: 0.95rem;
+    background: #f8fafc;
+    color: #2d3748;
+    transition: all 0.2s ease;
+}
+
+.chat-input-area input:focus {
+    border-color: #00adb5;
+    background: #ffffff;
+    box-shadow: 0 0 0 3px rgba(0, 173, 181, 0.1);
+}
+
+.chat-input-area button {
+    padding: 0 24px;
+    background: #222831;
+    color: #ffffff;
+    border: none;
+    border-radius: 24px;
+    font-weight: 600;
+    font-size: 0.95rem;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.chat-input-area button:hover {
+    background: #00adb5;
+    transform: translateY(-1px);
+}
+
+/* ==========================================
+   ADAPTARE AUTOMATĂ PENTRU TEMA ÎNTUNECATĂ 🌙
+   ========================================== */
+body.dark-theme .chat-card {
+    background: #1e1e24;
+    border-color: #2a2a35;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+}
+
+body.dark-theme .chat-header {
+    background: #141419;
+}
+
+body.dark-theme .chat-box {
+    background: #141419;
+}
+
+body.dark-theme .chat-box::-webkit-scrollbar-thumb {
+    background: #2d2d3d;
+}
+
+body.dark-theme .ai-msg {
+    background: #23232f;
+    color: #e2e8f0;
+    border-color: #2a2a35;
+}
+
+body.dark-theme .chat-input-area {
+    background: #1e1e24;
+    border-top-color: #2a2a35;
+}
+
+body.dark-theme .chat-input-area input {
+    background: #23232f;
+    border-color: #2a2a35;
+    color: #ffffff;
+}
+
+body.dark-theme .chat-input-area input:focus {
+    border-color: #00adb5;
+    box-shadow: 0 0 0 3px rgba(0, 173, 181, 0.15);
+}
+
+body.dark-theme .chat-input-area button {
+    background: #00adb5;
+}
+
+body.dark-theme .chat-input-area button:hover {
+    background: #008c94;
+}
+
